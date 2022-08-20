@@ -2,19 +2,19 @@
 {
     public class Handler
     {
-        public void Handle(RequestName request)
+        public Response Handle(RequestName request)
         {
-
+            return new Response("Name created");
         }
 
-        public void Handle(RequestAddress request)
+        public Response Handle(RequestAddress request)
         {
-
+            return new Response("Address created");
         }
 
-        public void Handle(RequestIdentity request)
+        public Response Handle(RequestIdentity request)
         {
-
+            return new Response("Identity created");
         }
     }
 }
