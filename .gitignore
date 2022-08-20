@@ -7,3 +7,7 @@ Flunt/bin
 FluntFakeProject.Domain/obj
 FluntFakeProject.Domain/Properties
 FluntFakeProject.Domain/bin
+
+FluntFakeProject.APP/obj
+FluntFakeProject.APP/Properties
+FluntFakeProject.APP/bin

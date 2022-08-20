@@ -71,5 +71,18 @@ namespace FluntFakeProject.Domain.Handlers
 
             return new Response("Person has been created");
         }
+
+        public async Task<Response> HandleAsync(RequestName requestName)
+        {
+            if (requestName.IsValid is false) return new Response("Invalid request", requestName.Notifications);
+
+            var name = new Name(requestName.FirstName, requestName.LastName, requestName.Nickname);
+
+            AppendNotifications(name);
+
+            if (IsValid is false) return new Response("Invalid request", name.Notifications);
+
+            return new Response("Registry name created");
+        }
     }
 }
