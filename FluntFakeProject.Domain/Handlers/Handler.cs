@@ -38,7 +38,7 @@ namespace FluntFakeProject.Domain.Handlers
 
             if (IsValid is false) throw new Exception("Entities or value objects are not valid");
 
-            return new Response("Address created");
+            return new Response("Address has been created");
         }
 
         public Response Handle(RequestIdentity request)
@@ -55,7 +55,7 @@ namespace FluntFakeProject.Domain.Handlers
 
             if (IsValid is false) throw new Exception("Entities or value objects are not valid");
 
-            return new Response("Identity created");
+            return new Response("Identity has been created");
         }
 
         public Response Handle(RequestName requestName, RequestAddress requestAddress, RequestIdentity requestIdentity)
