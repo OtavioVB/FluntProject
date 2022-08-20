@@ -1,6 +1,7 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
 using FluntFakeProject.Domain.ValueObjects;
+using FluntFakeProject.Domain.Entities;
 
 namespace FluntFakeProject.Domain.Handlers
 {
@@ -62,6 +63,11 @@ namespace FluntFakeProject.Domain.Handlers
             Handle(requestName);
             Handle(requestAddress);
             Handle(requestIdentity);
+
+            var person = new Person(
+                new Identity(requestIdentity.GeneralRegistry, requestIdentity.IndividualCode, requestIdentity.BirthPlace, requestIdentity.ShippingDate),
+                new StreetAddress(requestAddress.AddressType, requestAddress.StreetName, requestAddress.HouseNumber, requestAddress.Neighborhood, requestAddress.Complement, requestAddress.IDAddress),
+                new Name(requestName.FirstName, requestName.LastName, requestName.Nickname));
 
             return new Response("Person has been created");
         }
