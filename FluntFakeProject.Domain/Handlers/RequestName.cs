@@ -7,9 +7,9 @@ namespace FluntFakeProject.Domain.Handlers
 {
     public class RequestName : Notifiable
     {
-        public string FirstName { get; private set; } = string.Empty;
-        public string LastName { get; private set; } = string.Empty;
-        public string Nickname { get; private set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
+        public string Nickname { get; set; } = string.Empty;
 
         public RequestName(string firstName, string lastName, string nickname)
         {

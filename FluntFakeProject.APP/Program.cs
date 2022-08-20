@@ -1,6 +1,5 @@
 using FluntFakeProject.Domain.Handlers;
-using Flunt.Notifications;
-using Flunt.Validations;
+
 
 namespace FluntFakeProject.APP;
 
@@ -9,6 +8,7 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Services.AddTransient<Handler>();
         builder.Services.AddAuthorization();
         var app = builder.Build();
         app.UseHttpsRedirection();
