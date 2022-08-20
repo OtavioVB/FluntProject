@@ -1,6 +1,6 @@
 ﻿using Flunt.Notifications;
 using Flunt.Validations;
-using Flunt.FakeProjects.ValueObjects.Assertions;
+using FluntFakeProject.Domain.ValueObjects.Assertions;
 
 namespace FluntFakeProject.Domain.ValueObjects;
 

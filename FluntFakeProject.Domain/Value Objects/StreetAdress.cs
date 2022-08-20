@@ -1,29 +1,35 @@
 ﻿using Flunt.Notifications;
 using FluntFakeProject.Domain.ValueObjects.Assertions;
+using Flunt.Validations;
 
 namespace FluntFakeProject.Domain.ValueObjects;
 
-public enum AdressType { Street, Park, Avenue }
+public enum AddressType { Street, Park, Avenue }
 
-public class StreetAdress : ValueObject
+public class StreetAddress : ValueObject
 {
-    public AdressType AdressType { get; private set; } // Type of the adress (pt-br: Rua, Parque, Avenida)
+    public AddressType AddressType { get; private set; } // Type of the address (pt-br: Rua, Parque, Avenida)
     public string StreetName { get; private set; }
-    public int HouseNumber { get; private set; }
+    public string HouseNumber { get; private set; }
     public string Neighborhood { get; private set; }
     public string Complement { get; private set; }
     public string IDAddress { get; private set; } // CEP
 
-    public StreetAdress(AdressType adressType, string streetName, int houseNumber, string neighborhood, string complement, string idAddress)
+    public StreetAddress(AddressType addressType, string streetName, string houseNumber, string neighborhood, string complement, string idAddress)
     {
-        AdressType = adressType;
+        AddressType = addressType;
         StreetName = streetName;
         HouseNumber = houseNumber;
         Neighborhood = neighborhood;
         Complement = complement;
         IDAddress = idAddress;
 
-        Assert(
-            AdressAssertion.CreateStreetNameContract(StreetName));
+        AppendNotifications(
+            AddressAssertion.CreateStreetNameContract(StreetName),
+            AddressAssertion.CreateHouseNameContract(HouseNumber),
+            AddressAssertion.CreateNeighborhoodContract(Neighborhood),
+            AddressAssertion.CreateComplementContract(Complement),
+            AddressAssertion.CreateIDAddressContract(IDAddress)
+        );
     }
 }

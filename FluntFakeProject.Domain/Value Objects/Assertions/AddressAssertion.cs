@@ -3,7 +3,7 @@ using Flunt.Validations;
 
 namespace FluntFakeProject.Domain.ValueObjects.Assertions;
 
-public static class AdressAssertion
+public static class AddressAssertion
 {
     public static Contract CreateStreetNameContract(string streetName)
     {
@@ -13,10 +13,10 @@ public static class AdressAssertion
             .IsGreaterOrEqualsThan(streetName.Length, 60);
     }
 
-    public static Contract CreateHouseNameContract(int houseNumber)
+    public static Contract CreateHouseNameContract(string houseNumber)
     {
         return new Contract()
-            .IsBetween(houseNumber, 0, 100000, "StreetAdress.HouseNumber.Overflow.Value", "Invalid house number");
+            .Matches(houseNumber,"^[0-9]{8}$");
     }
 
     public static Contract CreateNeighborhoodContract(string neighborhood)
@@ -35,7 +35,7 @@ public static class AdressAssertion
             .IsLowerOrEqualsThan(complement.Length, 100);
     }
 
-    public static Contract CreateIDAdressContract(string idAddress)
+    public static Contract CreateIDAddressContract(string idAddress)
     {
         return new Contract()
             .Matches(idAddress, @"^[0]{1}[0-9]{8}$", "StreetAdress.IDAdress.RegularExpression.Value", "The Adress ID is invalid");
