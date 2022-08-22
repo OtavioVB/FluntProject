@@ -137,5 +137,89 @@ namespace FluntFakeProject.Tests
             var name = new Name("abcdeabcde", "abcdeabcde", "abcdeabcde");
             Assert.AreEqual(true, name.IsValid);
         }
+
+        [TestMethod]
+        public void NameTestFirstNamePropertyExceptedNoneNotificationsCount()
+        {
+            var name = new Name("abc", "abcdeabcde", "abcdeabcde");
+            Assert.AreEqual(name.Notifications.Count, 0);
+        }
+
+        [TestMethod]
+        public void NameTestFirstNamePropertyExceptedOneNotificationWithCharCountLowerThanThree()
+        {
+            var name = new Name("ab", "abcdeabcde", "abcdeabcde");
+            Assert.AreEqual(name.Notifications.Count, 1);
+        }
+
+        [TestMethod]
+        public void NameTestFirstNamePropertyExceptedOneNotificationsWithCharCountGreaterThanTwenty()
+        {
+            var name = new Name("123456789123456789123", "abcdeabcde", "abcdeabcde");
+            Assert.AreEqual(name.Notifications.Count, 1);
+        }
+
+        [TestMethod]
+        public void NameTestLastNamePropertyExceptedNoneNotificationsCount()
+        {
+            var name = new Name("abc", "abcdeabcde", "abcdeabcde");
+            Assert.AreEqual(name.Notifications.Count, 0);
+        }
+
+        [TestMethod]
+        public void NameTestLastNamePropertyExceptedOneNotificationWithCharCountLowerThanThree()
+        {
+            var name = new Name("abcdeabcde", "ab", "abcdeabcde");
+            Assert.AreEqual(name.Notifications.Count, 1);
+        }
+
+        [TestMethod]
+        public void NameTestLastNamePropertyExceptedOneNotificationsWithCharCountGreaterThanTwenty()
+        {
+            var name = new Name("abcdeabcde", "123456789123456789123", "abcdeabcde");
+            Assert.AreEqual(name.Notifications.Count, 1);
+        }
+
+        [TestMethod]
+        public void NameTestNickNamePropertyExceptedNoneNotificationsCount()
+        {
+            var name = new Name("abc", "abcdeabcde", "abcdeabcde");
+            Assert.AreEqual(name.Notifications.Count, 0);
+        }
+
+        [TestMethod]
+        public void NameTestNickNamePropertyExceptedOneNotificationWithCharCountLowerThanThree()
+        {
+            var name = new Name("abcdeabcde", "abcdeabcde", "ab");
+            Assert.AreEqual(name.Notifications.Count, 1);
+        }
+
+        [TestMethod]
+        public void NameTestNickNamePropertyExceptedOneNotificationsWithCharCountGreaterThanTwenty()
+        {
+            var name = new Name("abcdeabcde", "abcdeabcde", "123456789123456789123");
+            Assert.AreEqual(name.Notifications.Count, 1);
+        }
+
+        [TestMethod]
+        public void NameTestAllPropertiesExceptedThreeNotificationWithCharCountLowerThanThree()
+        {
+            var name = new Name("ab", "ab", "12");
+            Assert.AreEqual(name.Notifications.Count, 3);
+        }
+
+        [TestMethod]
+        public void NameTestAllPropertiesExceptedThreeNotificationWithCharCountGreaterThanTwent()
+        {
+            var name = new Name("123456789123456789123", "123456789123456789123", "123456789123456789123");
+            Assert.AreEqual(name.Notifications.Count, 3);
+        }
+
+        [TestMethod]
+        public void NameTestAllPropertiesExceptedThreeNotificationWithCharCountZero()
+        {
+            var name = new Name("", "", "");
+            Assert.AreEqual(name.Notifications.Count, 3);
+        }
     }
 }
