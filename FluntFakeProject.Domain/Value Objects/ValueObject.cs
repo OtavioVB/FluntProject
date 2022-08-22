@@ -2,5 +2,5 @@
 
 namespace FluntFakeProject.Domain.ValueObjects;
 
-public abstract class ValueObject : Notifiable 
+public abstract class ValueObject : Notifiable
 { }
